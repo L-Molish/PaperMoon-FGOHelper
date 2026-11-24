@@ -1,4 +1,4 @@
-# FGO抓包助手 v2.3.13 · PaperMoon
+# FGO抓包助手 v2.3.14 · PaperMoon
 
 <p align="center">
   <img src="docs/readme/banner.png" alt="PaperMoon · FGO 抓包助手" width="100%">
@@ -9,18 +9,18 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.3.13-4A90D9" alt="version">
+  <img src="https://img.shields.io/badge/version-2.3.14-4A90D9" alt="version">
   <img src="https://img.shields.io/badge/platform-Windows%2010%20%2F%2011-0078D4" alt="platform">
   <img src="https://img.shields.io/badge/emulator-MuMu%20%7C%20%E9%9B%B7%E7%94%B5-2EA043?logo=android&logoColor=white" alt="emulator">
   <img src="https://img.shields.io/badge/license-freeware-lightgrey" alt="license">
 </p>
 
 <p align="center">
-  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.13/FGO.exe">⬇️ 下载</a>
+  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.14/FGO.exe">⬇️ 下载</a>
   ·
-  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.13/instructions.txt">使用说明</a>
+  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.14/instructions.txt">使用说明</a>
   ·
-  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.13/SHA256SUMS.txt">文件校验</a>
+  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.14/SHA256SUMS.txt">文件校验</a>
 </p>
 
 ## 目录
@@ -107,6 +107,7 @@
 - 应用宝
 - OPPO（v2.3.7 起）
 - 华为（v2.3.7 起）
+- 魅族（v2.3.14 起）
 
 **台服（v2.3.7 起）**：小萌代理版本。实测**不需要加速器或代理**——台服流量走本机真实网络，程序按国服同样的直连流程抓取。首次启动会下载较多资源，耐心等游戏进入标题画面后开始抓包即可。
 
@@ -150,11 +151,11 @@ A: 图鉴里有随包资料还没收录的新从者。程序算不准就不给�
 
 ## 更新日志 📝
 
+- **v2.3.14 魅族渠道服**：接入魅族渠道服（com.bilibili.fgo.mz），与 OPPO/华为共用国服抓包链路，已实机抓取完整登录响应。
 - **v2.3.13 修掉几处真的会出错的地方**：中文或带空格的路径下「更换御主服」会失败（改为按 URL 正确解码后重绘，不再丢图）；台服统计之前误用国服召唤资料、报告页也把区服标成国服（现在读日服资料，页眉标 TW）；设备侧代理白名单把 220~223 段合法公网 IPv4 误判成保留地址（已放行）；攒石规划识别不到「冠位」从者、部分任务条件为空时会中断（已修）；报告与攒石的后台线程一旦抛异常，界面会一直卡在「加载中」（现在必定复位）；渲染中关窗会等渲染线程收工再清理临时目录。
 - **v2.3.12 统计报告打开提速**：同一份抓包重复打开不再重算重渲；卡池与从者资料改为进程内缓存（按文件时间戳自动失效，更新资料后立即生效）；报告长图改为单次浏览器渲染并去掉重复压缩，首次出图从约 10.5 秒降到约 5 秒，再次打开基本瞬时。
 - **v2.3.11 后续修复**：整理雷电连接与数据报告的收尾问题（开发中，发布前补全）；新增台服攒石规划——台服已公布的关卡、活动、商店用台服真实档期，其余按日服排期顺延实测滞后（629 天）预测，卡池列表与抽数算法和国服一致。
 - **v2.3.10 修复雷电共享 NAT 端口冲突与防误连**：雷电 9 / 14 共享 NAT 改为会话级 `127.0.0.1` 动态回环转发，先核验 VM 归属、DHCP 租约（`acked`）与对应 VBox NAT 监听进程，连接后再核对安卓大版本与设备 MAC 后才允许 root；结束、失败或取消时先恢复设备网络，再断开本次 ADB 并清理自建规则，保留原 `5555` 与第三方规则。数据报告渲染修复：浏览器临时未返回页面时会有限重试并区分「浏览器退出 / 空页面 / 缺少高度」等原因，不再一律报成「没有回报高度」；隔离打包运行时注入的 Qt / Python 环境变量，避免干扰外部浏览器。
-- **v2.3.9 报告更快更清晰**：重做御主服切换 —— 弹窗里能看全礼装名和等级，选中的那一件有蓝框和对勾，滚轮一格一格走；换装不再重画整页，只重绘立绘那一块，从约 9 秒降到约 3 秒。数据报告改为直接按 2 倍分辨率渲染，高分屏上的文字和图标不再发虚；「幸运」评级与出货率数字换成 FGO 的衬线数字体。
 更早的版本见 [Releases](https://github.com/L-Molish/PaperMoon-FGOHelper/releases)。
 
 ## 隐私与数据 🔒
