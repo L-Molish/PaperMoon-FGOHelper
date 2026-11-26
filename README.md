@@ -1,4 +1,4 @@
-# FGO抓包助手 v2.3.15 · PaperMoon
+# FGO抓包助手 v2.3.16 · PaperMoon
 
 <p align="center">
   <img src="docs/readme/banner.png" alt="PaperMoon · FGO 抓包助手" width="100%">
@@ -9,18 +9,18 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.3.15-4A90D9" alt="version">
+  <img src="https://img.shields.io/badge/version-2.3.16-4A90D9" alt="version">
   <img src="https://img.shields.io/badge/platform-Windows%2010%20%2F%2011-0078D4" alt="platform">
   <img src="https://img.shields.io/badge/emulator-MuMu%20%7C%20%E9%9B%B7%E7%94%B5-2EA043?logo=android&logoColor=white" alt="emulator">
   <img src="https://img.shields.io/badge/license-freeware-lightgrey" alt="license">
 </p>
 
 <p align="center">
-  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.15/FGO.exe">⬇️ 下载</a>
+  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.16/FGO.exe">⬇️ 下载</a>
   ·
-  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.15/instructions.txt">使用说明</a>
+  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.16/instructions.txt">使用说明</a>
   ·
-  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.15/SHA256SUMS.txt">文件校验</a>
+  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.16/SHA256SUMS.txt">文件校验</a>
 </p>
 
 ## 目录
@@ -137,6 +137,9 @@ A: 这个程序没有买代码签名证书，SmartScreen 看到没签名的 exe 
 **Q: 环境检查未通过怎么办？**  
 A: 主界面会逐项列出哪一项没过、为什么、该怎么处理（比如 ROOT 没开、端口被占）。照着改完再点一次「检查环境」。
 
+**Q: MuMu 12 开了远程桥接，或改成本地连接，还是拿不到 ADB 的 ROOT？**  
+A: 远程桥接和本地连接只影响 ADB 的连接地址。程序仍先走原来的 adb root；只有 adbd 明确拒绝以 ROOT 重启时，才会再试系统 su。系统 su 实际返回 uid=0 才算拿到 ROOT。拿不到 uid=0 时初始化仍然失败，界面会写明 adbd 和 su 都没有。检查环境只看当前 adbd 是不是 ROOT，不会为了检查去执行 su。你换成另一种连接方式，也过不了这一步。
+
 **Q: 为什么模拟器重启后需要恢复证书？**  
 A: 证书是运行时挂载进内存里的，程序不往只读的系统分区（`/system`）写任何东西。模拟器一重启，挂载自然就没了 —— 直接点「开始抓包」会自动重新挂载并核验，不用再点一遍「初始化环境」。
 
@@ -151,11 +154,11 @@ A: 图鉴里有随包资料还没收录的新从者。程序算不准就不给�
 
 ## 更新日志 📝
 
+- **v2.3.16 MuMu 上 adbd 拒绝以 ROOT 重启时再试系统 su**：只有实际返回 uid=0 才算拿到 ROOT；原来 adbd 已经是 ROOT 的实例不变。雷电初始化若碰到卡住的 VBoxManage，会跳过它再试雷电自带的管理工具；雷电自己的等待放宽到 90 秒，已经能马上返回的连接过程不变。
 - **v2.3.15 修复数据报告渲染**：修复报告预览偶尔显示空白、长图生成失败的问题，浏览器超时后可以及时切换到备用截图流程。
 - **v2.3.14 魅族渠道服**：接入魅族渠道服（com.bilibili.fgo.mz），与 OPPO/华为共用国服抓包链路，已实机抓取完整登录响应。
 - **v2.3.13 修掉几处真的会出错的地方**：中文或带空格的路径下「更换御主服」会失败（改为按 URL 正确解码后重绘，不再丢图）；台服统计之前误用国服召唤资料、报告页也把区服标成国服（现在读日服资料，页眉标 TW）；设备侧代理白名单把 220~223 段合法公网 IPv4 误判成保留地址（已放行）；攒石规划识别不到「冠位」从者、部分任务条件为空时会中断（已修）；报告与攒石的后台线程一旦抛异常，界面会一直卡在「加载中」（现在必定复位）；渲染中关窗会等渲染线程收工再清理临时目录。
 - **v2.3.12 统计报告打开提速**：同一份抓包重复打开不再重算重渲；卡池与从者资料改为进程内缓存（按文件时间戳自动失效，更新资料后立即生效）；报告长图改为单次浏览器渲染并去掉重复压缩，首次出图从约 10.5 秒降到约 5 秒，再次打开基本瞬时。
-- **v2.3.11 后续修复**：整理雷电连接与数据报告的收尾问题（开发中，发布前补全）；新增台服攒石规划——台服已公布的关卡、活动、商店用台服真实档期，其余按日服排期顺延实测滞后（629 天）预测，卡池列表与抽数算法和国服一致。
 更早的版本见 [Releases](https://github.com/L-Molish/PaperMoon-FGOHelper/releases)。
 
 ## 隐私与数据 🔒
