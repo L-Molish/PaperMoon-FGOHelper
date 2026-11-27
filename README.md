@@ -1,4 +1,4 @@
-# FGO抓包助手 v2.3.17 · PaperMoon
+# FGO抓包助手 v2.3.18 · PaperMoon
 
 <p align="center">
   <img src="docs/readme/banner.png" alt="PaperMoon · FGO 抓包助手" width="100%">
@@ -9,18 +9,18 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.3.17-4A90D9" alt="version">
+  <img src="https://img.shields.io/badge/version-2.3.18-4A90D9" alt="version">
   <img src="https://img.shields.io/badge/platform-Windows%2010%20%2F%2011-0078D4" alt="platform">
   <img src="https://img.shields.io/badge/emulator-MuMu%20%7C%20%E9%9B%B7%E7%94%B5-2EA043?logo=android&logoColor=white" alt="emulator">
   <img src="https://img.shields.io/badge/license-freeware-lightgrey" alt="license">
 </p>
 
 <p align="center">
-  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.17/PaperMoon.exe">⬇️ 下载</a>
+  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.18/PaperMoon.exe">⬇️ 下载</a>
   ·
-  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.17/instructions.txt">使用说明</a>
+  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.18/instructions.txt">使用说明</a>
   ·
-  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.17/SHA256SUMS.txt">文件校验</a>
+  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.18/SHA256SUMS.txt">文件校验</a>
 </p>
 
 ## 目录
@@ -154,11 +154,11 @@ A: 图鉴里有随包资料还没收录的新从者。程序算不准就不给�
 
 ## 更新日志 📝
 
+- **v2.3.18 修复数据报告空白与素材下载超时**：扩展发现用户目录与注册表中的 Edge / Chrome 内核，无头浏览器返回空页或读取超时时自动切换兼容启动模式并在备用浏览器间合理分摊耗时，同时保留真实前置报错方便排查；素材与立绘读取新增 45 秒总预算、阶段进度提示与切页即停取消机制，网络超时后仍保留已缓存的从者立绘、职阶图标与页面背景继续出图；渲染失败时高对比度提示原因与脱敏诊断日志路径，并在无有效预览图时锁定导出按钮。
 - **v2.3.17 统计更新稳健性、低星/台服出货率兼容与雷电 VBox 隔离**：统计资料改按分片重试并校验清单摘要与上游版本防降级，且不再被慢攒石拖灰「更新资料」按钮和切区；图鉴缺口识别低星与台服专属纪念礼装后不再误拦五星出货率；雷电隔离电脑另装的 Oracle VirtualBox 进程、注册表与 PATH 冲突，原有各自等待与成功路径保持不变。
 - **v2.3.16 MuMu 上 adbd 拒绝以 ROOT 重启时再试系统 su**：只有实际返回 uid=0 才算拿到 ROOT；原来 adbd 已经是 ROOT 的实例不变。雷电初始化若碰到卡住的 VBoxManage，会跳过它再试雷电自带的管理工具；雷电自己的等待放宽到 90 秒，已经能马上返回的连接过程不变。
 - **v2.3.15 修复数据报告渲染**：修复报告预览偶尔显示空白、长图生成失败的问题，浏览器超时后可以及时切换到备用截图流程。
 - **v2.3.14 魅族渠道服**：接入魅族渠道服（com.bilibili.fgo.mz），与 OPPO/华为共用国服抓包链路，已实机抓取完整登录响应。
-- **v2.3.13 修掉几处真的会出错的地方**：中文或带空格的路径下「更换御主服」会失败（改为按 URL 正确解码后重绘，不再丢图）；台服统计之前误用国服召唤资料、报告页也把区服标成国服（现在读日服资料，页眉标 TW）；设备侧代理白名单把 220~223 段合法公网 IPv4 误判成保留地址（已放行）；攒石规划识别不到「冠位」从者、部分任务条件为空时会中断（已修）；报告与攒石的后台线程一旦抛异常，界面会一直卡在「加载中」（现在必定复位）；渲染中关窗会等渲染线程收工再清理临时目录。
 更早的版本见 [Releases](https://github.com/L-Molish/PaperMoon-FGOHelper/releases)。
 
 ## 隐私与数据 🔒
