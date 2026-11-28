@@ -1,4 +1,4 @@
-# FGO抓包助手 v2.3.20 · PaperMoon
+# FGO抓包助手 v2.3.21 · PaperMoon
 
 <p align="center">
   <img src="docs/readme/banner.png" alt="PaperMoon · FGO 抓包助手" width="100%">
@@ -9,18 +9,18 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.3.20-4A90D9" alt="version">
+  <img src="https://img.shields.io/badge/version-2.3.21-4A90D9" alt="version">
   <img src="https://img.shields.io/badge/platform-Windows%2010%20%2F%2011-0078D4" alt="platform">
   <img src="https://img.shields.io/badge/emulator-MuMu%20%7C%20%E9%9B%B7%E7%94%B5-2EA043?logo=android&logoColor=white" alt="emulator">
   <img src="https://img.shields.io/badge/license-freeware-lightgrey" alt="license">
 </p>
 
 <p align="center">
-  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.20/PaperMoon.exe">⬇️ 下载</a>
+  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.21/PaperMoon.exe">⬇️ 下载</a>
   ·
-  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.20/instructions.txt">使用说明</a>
+  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.21/instructions.txt">使用说明</a>
   ·
-  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.20/SHA256SUMS.txt">文件校验</a>
+  <a href="https://github.com/L-Molish/PaperMoon-FGOHelper/releases/download/v2.3.21/SHA256SUMS.txt">文件校验</a>
 </p>
 
 ## 目录
@@ -157,11 +157,11 @@ A: 图鉴里有随包资料还没收录的新从者。程序算不准就不给�
 
 ## 更新日志 📝
 
+- **v2.3.21 修复高权限下报告渲染早退并新增浏览器兜底**：在无头浏览器参数中阻止 Chromium 138+ / Edge 在管理员权限下自动降权脱离，避免父进程以退出码 0 提前结束；截图全部失败但页面已生成时保留本地 HTML，并显示「在浏览器中打开报告」按钮，可直接查看或打印为 PDF，长图导出仍只在预览有效时可用。
 - **v2.3.20 修复统计资料更新超时与 Windows 代理兼容**：修复单区 15 秒重试预算跨正常步骤共享导致后续小文件误报“超过 30 秒无响应”的问题，并将主数据大文件读取超时放宽至 60 秒；新增 HTTP Keep-Alive 连接池复用、Windows PAC（自动配置脚本）与 SOCKS5/4a 系统代理支持、无效代理安全回退直连、双栈快速建连（Happy Eyeballs），以及同批公共数据源不可达时的跨区短路；更新资料时同步沿用新传输层，原有统计、报告、攒石规划与抓包流程不变。
 - **v2.3.19 修复雷电初始化卡在 VBoxManage 超时**：雷电实例已运行时，若 VBoxManage 90 秒无响应，先用 15 秒快速解析，超时后改走雷电默认 ADB 端口（实例 N 为 5555+2N）直连，并核验安卓版本与实例网卡 MAC；冷启动时最多等 60 秒让雷电建立端口转发，仍不行才回到完整解析。原本能秒回的连接、MuMu 路径、共享 NAT 动态转发与结束清理都不变；直连兜底也失败时会明确说明，不再与旧版报错混在一起。
 - **v2.3.18 修复数据报告空白与素材下载超时**：扩展发现用户目录与注册表中的 Edge / Chrome 内核，无头浏览器返回空页或读取超时时自动切换兼容启动模式并在备用浏览器间合理分摊耗时，同时保留真实前置报错方便排查；素材与立绘读取新增 45 秒总预算、阶段进度提示与切页即停取消机制，网络超时后仍保留已缓存的从者立绘、职阶图标与页面背景继续出图；渲染失败时高对比度提示原因与脱敏诊断日志路径，并在无有效预览图时锁定导出按钮。
 - **v2.3.17 统计更新稳健性、低星/台服出货率兼容与雷电 VBox 隔离**：统计资料改按分片重试并校验清单摘要与上游版本防降级，且不再被慢攒石拖灰「更新资料」按钮和切区；图鉴缺口识别低星与台服专属纪念礼装后不再误拦五星出货率；雷电隔离电脑另装的 Oracle VirtualBox 进程、注册表与 PATH 冲突，原有各自等待与成功路径保持不变。
-- **v2.3.16 MuMu 上 adbd 拒绝以 ROOT 重启时再试系统 su**：只有实际返回 uid=0 才算拿到 ROOT；原来 adbd 已经是 ROOT 的实例不变。雷电初始化若碰到卡住的 VBoxManage，会跳过它再试雷电自带的管理工具；雷电自己的等待放宽到 90 秒，已经能马上返回的连接过程不变。
 更早的版本见 [Releases](https://github.com/L-Molish/PaperMoon-FGOHelper/releases)。
 
 ## 隐私与数据 🔒
